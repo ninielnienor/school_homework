@@ -1,0 +1,14 @@
+{
+    "name": "vendor/php",
+    "description": "Description of project php.",
+    "authors": [
+        {
+            "name": "ninielnienor",
+            "email": "ninielnienor@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "4.3.5"
+    }
+}
