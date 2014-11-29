@@ -2,27 +2,33 @@
 
 class WordCount
 {
-    public function countWordsIn($text) {
+    public static function countWordsIn($text) {
         if (!isset($text{0})) {
             return 0;
         }
 
         $wordCount = 0;
         $i = 0;
+        $isPreviousLetterWhiteSpace = true;
         do {
-            $isWhiteSpace = 
-                    $text{$i} == "\n" || 
-                    $text{$i} == "\r" || 
-                    $text{$i} == "\t" || 
-                    $text{$i} == " ";
+            $isWhiteSpace = self::isWhiteSpace($text, $i);
 
-            if (!$isWhiteSpace) {
-                $wordCount = 1;
+            if ($isPreviousLetterWhiteSpace && !$isWhiteSpace) {
+                $wordCount++;
             }
 
+            $isPreviousLetterWhiteSpace = $isWhiteSpace;
             $i++;
         } while ($i < strlen($text));
         
         return $wordCount;
+    }
+
+    private static function isWhiteSpace($text, $i)
+    {
+        return $text{$i} == "\n"
+            || $text{$i} == "\r"
+            || $text{$i} == "\t"
+            || $text{$i} == " ";
     }
 }
